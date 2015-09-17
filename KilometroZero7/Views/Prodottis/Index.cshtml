@@ -1,0 +1,69 @@
+﻿@model IEnumerable<KilometroZero7.Models.Prodotti>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.nome_categoria.nome_categoria)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.attivo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nome_prodotto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.descrizione_prodotto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.prezzo_prodotto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dataInizio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dataFine)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nome_categoria.nome_categoria)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.attivo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nome_prodotto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.descrizione_prodotto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.prezzo_prodotto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dataInizio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dataFine)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.prodottoId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.prodottoId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.prodottoId })
+        </td>
+    </tr>
+}
+
+</table>

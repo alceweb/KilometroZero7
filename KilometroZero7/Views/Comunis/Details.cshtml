@@ -1,0 +1,66 @@
+﻿@model KilometroZero7.Models.Comuni
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Comuni</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nome_comune)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nome_comune)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.provincia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.provincia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.regione)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.regione)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.data_registrazione)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.data_registrazione)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.attivo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.attivo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ultimo_accesso)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ultimo_accesso)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.comune_Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

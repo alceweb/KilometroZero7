@@ -1,0 +1,74 @@
+﻿@model KilometroZero7.Models.Prodotti
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Prodotti</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nome_categoria.nome_categoria)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nome_categoria.nome_categoria)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.attivo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.attivo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nome_prodotto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nome_prodotto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.descrizione_prodotto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.descrizione_prodotto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.prezzo_prodotto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.prezzo_prodotto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dataInizio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dataInizio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dataFine)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dataFine)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.prodottoId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
