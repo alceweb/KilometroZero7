@@ -123,7 +123,6 @@ namespace KilometroZero7.Controllers
             return RedirectToAction("VerifyPhoneNumber", new { PhoneNumber = model.Number });
         }
 
-
         //
         // POST: /Manage/RememberBrowser
         [HttpPost]
@@ -389,7 +388,6 @@ namespace KilometroZero7.Controllers
             RemovePhoneSuccess,
             Error
         }
-
 
         #endregion
     }

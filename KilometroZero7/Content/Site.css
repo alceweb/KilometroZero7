@@ -22,20 +22,3 @@ select,
 textarea {
     max-width: 280px;
 }
-/* settaggio aggiuntivo*/
-.red {
-    color:#900707;
-    font-size:1.8em;
-}
-.almishCesare {
-    font-style:italic;
-}
-    .almishCesare a {
-        text-decoration:none;
-        color:#333333;
-    }
-    .almishCesare b {
-        font-style:normal;
-        color: red;
-        font-weight:bold;
-    }

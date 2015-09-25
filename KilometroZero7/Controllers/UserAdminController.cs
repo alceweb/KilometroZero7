@@ -13,6 +13,7 @@ using System.Web.Mvc;
 
 namespace KilometroZero7.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class UsersAdminController : Controller
     {
         public UsersAdminController()
@@ -53,7 +54,6 @@ namespace KilometroZero7.Controllers
 
         //
         // GET: /Users/
-        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Index()
         {
             return View(await UserManager.Users.ToListAsync());
@@ -61,7 +61,6 @@ namespace KilometroZero7.Controllers
 
         //
         // GET: /Users/Details/5
-        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Details(string id)
         {
             if (id == null)
@@ -77,7 +76,6 @@ namespace KilometroZero7.Controllers
 
         //
         // GET: /Users/Create
-        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Create()
         {
             //Get the list of Roles
@@ -87,7 +85,6 @@ namespace KilometroZero7.Controllers
 
         //
         // POST: /Users/Create
-        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<ActionResult> Create(RegisterViewModel userViewModel, params string[] selectedRoles)
         {
@@ -125,7 +122,6 @@ namespace KilometroZero7.Controllers
 
         //
         // GET: /Users/Edit/1
-        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Edit(string id)
         {
             if (id == null)
@@ -155,7 +151,6 @@ namespace KilometroZero7.Controllers
 
         //
         // POST: /Users/Edit/5
-        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit([Bind(Include = "Email,Id")] EditUserViewModel editUser, params string[] selectedRole)
@@ -197,7 +192,6 @@ namespace KilometroZero7.Controllers
 
         //
         // GET: /Users/Delete/5
-        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Delete(string id)
         {
             if (id == null)
@@ -214,7 +208,6 @@ namespace KilometroZero7.Controllers
 
         //
         // POST: /Users/Delete/5
-        [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(string id)

@@ -16,7 +16,7 @@ namespace KilometroZero7.Models
     public class EditUserViewModel
     {
         public string Id { get; set; }
-        public string NomeCommerciante { get; set; }
+
         [Required(AllowEmptyStrings = false)]
         [Display(Name = "Email")]
         [EmailAddress]
