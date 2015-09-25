@@ -130,7 +130,6 @@ namespace KilometroZero7.Controllers
         //
         // POST: /Roles/Edit/5
         [HttpPost]
-
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit([Bind(Include = "Name,Id")] RoleViewModel roleModel)
         {

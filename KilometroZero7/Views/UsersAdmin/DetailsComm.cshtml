@@ -1,0 +1,99 @@
+﻿@model KilometroZero7.Models.ApplicationUser
+
+@{
+    ViewBag.Title = "DetailsComm";
+}
+
+<h2>Profilo commerciante</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+    </dl>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+    </dl>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Cognome)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Cognome)
+        </dd>
+    </dl>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PartitaIva)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PartitaIva)
+        </dd>
+    </dl>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefono)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Telefono)
+        </dd>
+    </dl>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Indirizzo)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Indirizzo)
+        </dd>
+    </dl>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CAP)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CAP)
+        </dd>
+    </dl>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.RagioneSociale)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RagioneSociale)
+        </dd>
+    </dl>
+    <dl class="dl-horizontal">
+        <dt>
+            Ruoli di appartenenza
+        </dt>
+        <dd>
+            @if (ViewBag.RoleNames.Count == 0)
+            {
+                <hr />
+                <p>Nessun ruolo assegnato a questo utente</p>
+            }
+            @foreach (var item in ViewBag.RoleNames)
+            {
+                <span>@item</span>
+            }
+            
+        </dd>
+    </dl>
+</div>
+
+<hr/>
+<div>
+    <span class="btn btn-default">
+        @Html.ActionLink("Modifica", "EditComm")
+    </span>
+</div>

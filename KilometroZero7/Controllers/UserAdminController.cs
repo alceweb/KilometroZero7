@@ -13,7 +13,6 @@ using System.Web.Mvc;
 
 namespace KilometroZero7.Controllers
 {
-    [Authorize(Roles = "Admin")]
     public class UsersAdminController : Controller
     {
         public UsersAdminController()
@@ -54,6 +53,7 @@ namespace KilometroZero7.Controllers
 
         //
         // GET: /Users/
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Index()
         {
             return View(await UserManager.Users.ToListAsync());
@@ -61,6 +61,7 @@ namespace KilometroZero7.Controllers
 
         //
         // GET: /Users/Details/5
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Details(string id)
         {
             if (id == null)
@@ -75,7 +76,21 @@ namespace KilometroZero7.Controllers
         }
 
         //
+        // GET: /Users/DetailsComm/5
+        [Authorize(Roles = "Commerciante")]
+        public async Task<ActionResult> DetailsComm()
+        {
+            var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+
+            ViewBag.RoleNames = await UserManager.GetRolesAsync(user.Id);
+
+            return View(user);
+        }
+
+
+        //
         // GET: /Users/Create
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Create()
         {
             //Get the list of Roles
@@ -85,6 +100,7 @@ namespace KilometroZero7.Controllers
 
         //
         // POST: /Users/Create
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<ActionResult> Create(RegisterViewModel userViewModel, params string[] selectedRoles)
         {
@@ -122,6 +138,7 @@ namespace KilometroZero7.Controllers
 
         //
         // GET: /Users/Edit/1
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Edit(string id)
         {
             if (id == null)
@@ -140,6 +157,13 @@ namespace KilometroZero7.Controllers
             {
                 Id = user.Id,
                 Email = user.Email,
+                Nome = user.Nome,
+                Cognome = user.Cognome,
+                PartitaIva = user.PartitaIva,
+                Telefono = user.Telefono,
+                Indirizzo = user.Indirizzo,
+                CAP = user.CAP,
+                RagioneSociale = user.RagioneSociale,
                 RolesList = RoleManager.Roles.ToList().Select(x => new SelectListItem()
                 {
                     Selected = userRoles.Contains(x.Name),
@@ -151,9 +175,10 @@ namespace KilometroZero7.Controllers
 
         //
         // POST: /Users/Edit/5
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Email,Id")] EditUserViewModel editUser, params string[] selectedRole)
+        public async Task<ActionResult> Edit([Bind(Include = "Email,Id,Nome,Cognome,PartitaIva,Telefono,Indirizzo,CAP,ComuneId,RagioneSociale")] EditUserViewModel editUser, params string[] selectedRole)
         {
             if (ModelState.IsValid)
             {
@@ -165,6 +190,14 @@ namespace KilometroZero7.Controllers
 
                 user.UserName = editUser.Email;
                 user.Email = editUser.Email;
+                user.Nome = editUser.Nome;
+                user.Cognome = editUser.Cognome;
+                user.Cognome = editUser.Cognome;
+                user.PartitaIva = editUser.PartitaIva;
+                user.Telefono = editUser.Telefono;
+                user.Indirizzo = editUser.Indirizzo;
+                user.CAP = editUser.CAP;
+                user.RagioneSociale = editUser.RagioneSociale;
 
                 var userRoles = await UserManager.GetRolesAsync(user.Id);
 
@@ -189,9 +222,64 @@ namespace KilometroZero7.Controllers
             ModelState.AddModelError("", "Something failed.");
             return View();
         }
+        //
+        // GET: /users/EditComm/5
+        [Authorize(Roles = "Commerciante")]
+        public async Task<ActionResult> EditComm()
+        {
+            var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+
+            var userRoles = await UserManager.GetRolesAsync(user.Id);
+
+            return View(new EditCommViewModel()
+            {
+                Id = user.Id,
+                Email = user.Email,
+                Nome = user.Nome,
+                Cognome = user.Cognome,
+                PartitaIva = user.PartitaIva,
+                Telefono = user.Telefono,
+                Indirizzo = user.Indirizzo,
+                CAP = user.CAP,
+                RagioneSociale = user.RagioneSociale,
+            });
+        }
+        //
+        // POST: /Users/EditComm/5
+        [Authorize(Roles = "Commerciante")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> EditComm([Bind(Include = "Email,Id,Nome,Cognome,PartitaIva,Telefono,Indirizzo,CAP,RagioneSociale")] EditCommViewModel editUser)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await UserManager.FindByIdAsync(editUser.Id);
+                if (user == null)
+                {
+                    return HttpNotFound();
+                }
+
+                user.UserName = editUser.Email;
+                user.Email = editUser.Email;
+                user.Nome = editUser.Nome;
+                user.Cognome = editUser.Cognome;
+                user.PartitaIva = editUser.PartitaIva;
+                user.Telefono = editUser.Telefono;
+                user.Indirizzo = editUser.Indirizzo;
+                user.CAP = editUser.CAP;
+                user.Cognome = editUser.Cognome;
+                user.RagioneSociale = editUser.RagioneSociale;
+                await UserManager.UpdateAsync(user);
+                return RedirectToAction("DetailsComm");
+            }
+            ModelState.AddModelError("", "Something failed.");
+            return View("Index");
+        }
+
 
         //
         // GET: /Users/Delete/5
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Delete(string id)
         {
             if (id == null)
@@ -208,6 +296,7 @@ namespace KilometroZero7.Controllers
 
         //
         // POST: /Users/Delete/5
+        [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(string id)
