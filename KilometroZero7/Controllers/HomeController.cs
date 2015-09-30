@@ -26,5 +26,17 @@ namespace KilometroZero7.Controllers
 
             return View();
         }
+        public ActionResult Principio()
+        {
+            return View();
+        }
+        public ActionResult Commercianti()
+        {
+            return View();
+        }
+        public ActionResult Comuni()
+        {
+            return View();
+        }
     }
 }

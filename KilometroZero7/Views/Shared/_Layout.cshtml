@@ -18,26 +18,46 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Nome applicazione", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                <a class="navbar-brand" href="~/"><span class="red">K</span>ilometro <span class="red">Z</span>ero</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Chi siamo", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contatti", "Contact", "Home")</li>
-
-                    @if (Request.IsAuthenticated && User.IsInRole("Admin"))
-                    {
-                        <li>@Html.ActionLink("RolesAdmin", "Index", "RolesAdmin")</li>
-                        <li>@Html.ActionLink("UsersAdmin", "Index", "UsersAdmin")</li>
-                    }
-                    @if (Request.IsAuthenticated && User.IsInRole("Commerciante"))
-                    {
-                        <li>@Html.ActionLink("Profilo", "DetailsComm", "UsersAdmin")</li>
-                    }
+                    <li>@Html.ActionLink("Il principio", "Principio", "Home")</li>
+                    <li>@Html.ActionLink("Commercianti", "Commercianti", "Home")</li>
+                    <li>@Html.ActionLink("Comuni", "Comuni", "Home")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
+                <div  class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+
+                        @if (Request.IsAuthenticated && !User.IsInRole("Admin") && !User.IsInRole("Commerciante") && !User.IsInRole("Comune"))
+                        {
+                            <li class="red">Utente registrato</li>
+                            <li>@Html.ActionLink("Profilo", "Index", "RolesAdmin")</li>
+
+                        }
+
+                        @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+                        {
+                            <li class="red">Admin</li>
+                            <li>@Html.ActionLink("RolesAdmin", "Index", "RolesAdmin")</li>
+                            <li>@Html.ActionLink("UsersAdmin", "Index", "UsersAdmin")</li>
+                        }
+                        @if (Request.IsAuthenticated && User.IsInRole("Commerciante"))
+                        {
+                            <li class="red">Commercianti</li>
+                            <li>@Html.ActionLink("Profilo", "DetailsComm", "UsersAdmin")</li>
+
+                        }
+                        @if (Request.IsAuthenticated && User.IsInRole("Comune"))
+                        {
+                            <li class="red">Comune</li>
+                            <li>@Html.ActionLink("Gestisci commercianti", "DetailsComm", "UsersAdmin")</li>
+                        }
+                    </ul>
+                </div>
+
         </div>
     </div>
     <div class="container body-content">

@@ -207,6 +207,12 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\CaravaggioLente.jpg" />
+    <Content Include="Content\Images\cittadini.jpg" />
+    <Content Include="Content\Images\commercianti.jpg" />
+    <Content Include="Content\Images\Comuni.png" />
+    <Content Include="Content\Images\contatti.png" />
+    <Content Include="Content\Images\Lontano.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -272,6 +278,9 @@
     <Content Include="Views\UsersAdmin\Index.cshtml" />
     <Content Include="Views\UsersAdmin\DetailsComm.cshtml" />
     <Content Include="Views\UsersAdmin\EditComm.cshtml" />
+    <Content Include="Views\Home\Principio.cshtml" />
+    <Content Include="Views\Home\Commercianti.cshtml" />
+    <Content Include="Views\Home\Comuni.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
