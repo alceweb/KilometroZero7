@@ -199,6 +199,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\MailCreditComune.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\UserInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -211,8 +212,12 @@
     <Content Include="Content\Images\cittadini.jpg" />
     <Content Include="Content\Images\commercianti.jpg" />
     <Content Include="Content\Images\Comuni.png" />
+    <Content Include="Content\Images\Comuni_s.jpg" />
     <Content Include="Content\Images\contatti.png" />
+    <Content Include="Content\Images\KilometroZero_s.jpg" />
     <Content Include="Content\Images\Lontano.jpg" />
+    <Content Include="Content\Images\commercianti_s.jpg" />
+    <Content Include="Content\Images\principio_s.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -281,6 +286,8 @@
     <Content Include="Views\Home\Principio.cshtml" />
     <Content Include="Views\Home\Commercianti.cshtml" />
     <Content Include="Views\Home\Comuni.cshtml" />
+    <Content Include="Views\Home\MailCreditComune.cshtml" />
+    <Content Include="Views\Home\SentCreditComune.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

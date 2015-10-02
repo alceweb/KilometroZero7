@@ -3,41 +3,32 @@
     ViewBag.Title = "Comuni";
 }
 
-<div class="jumbotron">
+@{ var bkg = ViewBag.Title + "_s.jpg";}
+
+<div class="jumbotron" style="background-image:url(/Content/Images/@bkg)">
     <div class="row">
         <div class="col-md-6">
             <h2 class="text-center">Comuni</h2>
-            <img alt="" class="img-responsive" src="/Content/Images/comuni.png" />
+            @*<img alt="" class="img-responsive" src="/Content/Images/comuni.png" />*@
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6 box1">
             <h3>Dare più valore e importanza alle risorse locali!</h3>
-        </div>
-        <div class="col-md-6">
             @if (!Request.IsAuthenticated)
             {
                 <h4>
                     Sei un amministratore comunale?<br />
-                    Chiedi un incontro o una demo!
-                </h4>
-                <a href="/contact" class="btn btn-primary" href="#">Contattaci </a>
-                <h4>Per operare come comune devi essere registrato</h4>
-                <h5>Se sei già registrato @Html.ActionLink("Accedi", "Login", "Account") </h5>
-                <h5>Se non sei registrato</h5>
-                <a class="btn btn-primary" href="/Account/register">Registrati a <span class="red">K</span>ilometro <span class="red">Z</span>ero.</a>
+                </h4><br/>
+                @Html.ActionLink("Accredita", "MailCreditComune", "Home")
+                <a class="btn btn-primary" href="/Home/MailCreditComune.cshtml">Accredita il comune a <span class="red">K</span>ilometro <span class="red">Z</span>ero.</a>
+           }
 
-            }
-
-            @if (Request.IsAuthenticated && !User.IsInRole("Commerciante") && !User.IsInRole("Comune"))
+            @if (Request.IsAuthenticated && !User.IsInRole("Comune"))
             {
                 <h4>
                     Sei un amministratore comunale?<br />
-                    Chiedi un incontro o una demo!
                 </h4>
-                <a class="btn btn-primary" href="#">Contattaci </a>
-                <h4>Per poter operare il comune deve essere accreditato.</h4>
-
-                <a class="btn btn-primary" href="KZeroCommercianti/Main">Accredita il comune</a>
-            }
+                <a class="btn btn-primary" href="/Account/register">Accredita il comune a <span class="red">K</span>ilometro <span class="red">Z</span>ero.</a>
+    }
             @if (Request.IsAuthenticated && User.IsInRole("Comune"))
             {
                 <h4>Gestisci i commercianti</h4>

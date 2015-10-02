@@ -2,15 +2,15 @@
 @{
     ViewBag.Title = "Principio";
 }
+@{ var bkg = ViewBag.Title + "_s.jpg";}
 
-<div class="jumbotron">
+<div class="jumbotron" style="background-image:url(/Content/Images/@bkg)">
    <div class="row">
-       <h2>Il principio</h2>
-        <div class="col-md-6 text-center">
-            <img alt="" class="img-responsive img-circle" src="/Content/Images/lontano.jpg" />
+        <div class="col-md-6 text-center red">
+            @*<img alt="" class="img-responsive img-circle" src="/Content/Images/lontano.jpg" />*@
 
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4 box1">
             Perchè cercare lontano quello che hai a portata di mano?<br />
 
         </div>

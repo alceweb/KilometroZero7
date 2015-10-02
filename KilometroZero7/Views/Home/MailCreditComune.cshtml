@@ -1,0 +1,66 @@
+﻿
+@model KilometroZero7.Models.MailCreditComune
+@{
+    ViewBag.Title = "MailCreditComune";
+}
+
+<h2>@ViewBag.Title.</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <h4>Send your comments.</h4>
+    <hr />
+    <div class="form-group">
+        @Html.LabelFor(m => m.FromName, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.FromName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.FromName)
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.FromEmail, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.FromEmail, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.FromEmail)
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.FromTel, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextAreaFor(m => m.FromTel, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.FromTel)
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.FromIndirizzo, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextAreaFor(m => m.FromIndirizzo, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.FromIndirizzo)
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.FromCap, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextAreaFor(m => m.FromCap, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.FromCap)
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.FromComune, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextAreaFor(m => m.FromComune, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.FromComune)
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" class="btn btn-default" value="Send" />
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+

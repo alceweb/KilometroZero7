@@ -315,7 +315,7 @@ body {
   font-size: 14px;
   line-height: 1.428571429;
   color: #333333;
-  background-color: #ffffff;
+  background-color: #cecece;
 }
 
 input,
@@ -1243,7 +1243,7 @@ pre code {
 
 @media (min-width: 1200px) {
   .container {
-    max-width: 1170px;
+    max-width: 1320px;
   }
   .col-lg-1,
   .col-lg-2,
@@ -4928,13 +4928,15 @@ a.list-group-item.active > .badge,
 }
 
 .jumbotron {
+  background-color:rgba(34, 34, 34, 0.21);
   padding: 30px;
+  margin-top:7px;
   margin-bottom: 30px;
   font-size: 21px;
   font-weight: 200;
   line-height: 2.1428571435;
-  color: inherit;
-  background-color: #eeeeee;
+  color: #e8e8e8;
+  height:400px;
 }
 
 .jumbotron h1 {

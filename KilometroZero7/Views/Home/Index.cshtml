@@ -1,15 +1,17 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "KilometroZero";
 }
+@{ var bkg = ViewBag.Title + "_s.jpg";}
 
-<div class="jumbotron">
+
+<div class="jumbotron" style="background-image:url(/Content/Images/@bkg)">
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-6 text-center">
             <h1><span class="red">K</span>ilometro <span class="red">Z</span>ero</h1>
-            <p class="lead">Che cosa stai cercando?</p>
         </div>
-        <div class="col-md-6">
-            <img class="img-responsive" src="/Content/Images/CaravaggioLente.jpg" />
+        <div class="col-md-6 box1">
+            <h3 >Che cosa stai cercando?</h3>
+            @*<img class="img-responsive" src="/Content/Images/CaravaggioLente.jpg" />*@
         </div>
     </div>
 </div>

@@ -2,26 +2,22 @@
 @{
     ViewBag.Title = "Commercianti";
 }
-
-<div class="jumbotron">
+@{ var bkg = ViewBag.Title + "_s.jpg";}
+<div class="jumbotron" style="background-image:url(/Content/Images/@bkg)">
     <div class="row">
-
         <div class="col-md-6 ">
             <h2 class="text-center">Commercianti</h2>
-            <img alt="" class="img-responsive img-circle" src="/Content/Images/commercianti.jpg" />
+            @*<img alt="" class="img-responsive img-circle" src="/Content/Images/commercianti.jpg" />*@
 
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6 box1">
             <h3>Un valore aggiunto alla proposta commerciale sul territorio!</h3>
-        </div>
-        <div class="col-md-6">
             @if (!Request.IsAuthenticated)
             {
                 <h4>Per operare come commerciante devi essere registrato</h4>
                 <h5>Se sei già registrato @Html.ActionLink("Accedi", "Login","Account") </h5>
                 <h5>Se non sei registrato</h5>
                 <a class="btn btn-primary" href="/Account/register">Registrati a <span class="red">K</span>ilometro <span class="red">Z</span>ero.</a>
-
             }
 
             @if (Request.IsAuthenticated && !User.IsInRole("Commerciante") && !User.IsInRole("Comune"))
@@ -35,7 +31,6 @@
                 <h4>Gestisci i tuoi prodotti</h4>
                 <a class="btn btn-primary" href="KZeroCommercianti/Main">Entra</a>
             }
-
         </div>
     </div>
 </div>
