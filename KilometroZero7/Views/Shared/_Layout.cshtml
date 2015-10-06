@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNet.Identity
+
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -35,7 +37,6 @@
                         {
                             <li class="red">Utente registrato</li>
                             <li>@Html.ActionLink("Profilo", "Index", "RolesAdmin")</li>
-
                         }
 
                         @if (Request.IsAuthenticated && User.IsInRole("Admin"))
@@ -43,12 +44,14 @@
                             <li class="red">Admin</li>
                             <li>@Html.ActionLink("RolesAdmin", "Index", "RolesAdmin")</li>
                             <li>@Html.ActionLink("UsersAdmin", "Index", "UsersAdmin")</li>
+                            <li>@Html.ActionLink("Categorie", "Index", "Categories")</li>
+                            <li>@Html.ActionLink("Prodotti", "Index", "Prodottis")</li>
                         }
                         @if (Request.IsAuthenticated && User.IsInRole("Commerciante"))
                         {
-                            <li class="red">Commercianti</li>
+                            <li class="red">Commercianti </li>
+                            <li><a href="/Prodottis/Index">Prodotti <span class="badge">42</span></a></li>
                             <li>@Html.ActionLink("Profilo", "DetailsComm", "UsersAdmin")</li>
-
                         }
                         @if (Request.IsAuthenticated && User.IsInRole("Comune"))
                         {

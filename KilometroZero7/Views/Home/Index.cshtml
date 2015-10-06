@@ -1,4 +1,6 @@
-﻿@{
+﻿@model IEnumerable<KilometroZero7.Models.Prodotti>
+
+@{
     ViewBag.Title = "KilometroZero";
 }
 @{ var bkg = ViewBag.Title + "_s.jpg";}
@@ -10,11 +12,37 @@
             <h1><span class="red">K</span>ilometro <span class="red">Z</span>ero</h1>
         </div>
         <div class="col-md-6 box1">
+            <h3 class="white">In che paese ti trovi?</h3>
+            @Html.DropDownList("Email", String.Empty)
             <h3 >Che cosa stai cercando?</h3>
-            @*<img class="img-responsive" src="/Content/Images/CaravaggioLente.jpg" />*@
+            @Html.DropDownList("Email", String.Empty)
+
+           @*<img class="img-responsive" src="/Content/Images/CaravaggioLente.jpg" />*@
         </div>
     </div>
 </div>
+<div class="row">
+@foreach (var item in Model)
+{
+        <div class="col-xs-6 col-sm-3">
+            <a href="">
+
+                <h3 class="text-center">@Html.DisplayFor(modelItem => item.nome_prodotto)</h3>
+                <h3>@Html.DisplayFor(modelItem => item.descrizione_prodotto)</h3>
+                @Html.DisplayNameFor(model => model.prezzo_prodotto)
+                @Html.DisplayFor(modelItem => item.prezzo_prodotto)<br />
+                @Html.DisplayNameFor(model => model.categoria_Id)
+                @Html.DisplayFor(modelItem => item.nome_categoria.nome_categoria)<br />
+                @Html.ActionLink("Details", "Details", new { id = item.prodotto_id })
+            </a>
+        </div>
+    <!-- Add the extra clearfix for only the required viewport -->
+    <div class="clearfix visible-xs-block"></div>
+}
+    </div>
+
+
+
             <div class="row">
                 <div class="col-md-4 text-center">
                     <h1 class="glyphicon glyphicon-euro"></h1>

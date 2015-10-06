@@ -25,11 +25,14 @@ textarea {
 /* settaggio aggiuntivo*/
 .red {
     color:#900707;
-    font-size:1.8em;
+    font-size:1.5em;
 }
 .red1 {
     color:#900707;
     font-size:1em;
+}
+.white{
+    color:#f3f3f3;
 }
 .almishCesare {
     font-style:italic;
@@ -47,5 +50,9 @@ textarea {
 .box1 {
     background-color:rgba(34, 34, 34, 0.6);
     border-radius:5px;
-    padding-bottom:10px;
+    padding:13px;
+    color:#f1f1f1;
+}
+.img-user{
+    height:50px;
 }

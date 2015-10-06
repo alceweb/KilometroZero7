@@ -6,14 +6,36 @@ using System.Web.Mvc;
 using System.Net.Mail;
 using System.Threading.Tasks;
 using KilometroZero7.Models;
+using System.Data;
+using System.Data.Entity;
+using System.Net;
 
 namespace KilometroZero7.Controllers
 {
     public class HomeController : Controller
     {
+        private ApplicationDbContext db = new ApplicationDbContext();
+
         public ActionResult Index()
         {
-            return View();
+            var comu = db.Users;
+            ViewBag.Email = new SelectList(comu, "Id", "Email", String.Empty);
+            var prodottis = db.Prodottis.OrderByDescending(p => p.prodotto_id).Where(p=>p.descrizione_prodotto.Contains("torta")).Include(p => p.nome_categoria);
+            return View(prodottis);
+        }
+        // GET: Home/Details/5
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Prodotti prodotti = db.Prodottis.Find(id);
+            if (prodotti == null)
+            {
+                return HttpNotFound();
+            }
+            return View(prodotti);
         }
 
         public ActionResult About()

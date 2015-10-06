@@ -1,0 +1,65 @@
+﻿@model KilometroZero7.Models.Prodotti
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+<div>
+    <h4>Prodotti</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.utente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.utente)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.attivo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.attivo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nome_prodotto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nome_prodotto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.descrizione_prodotto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.descrizione_prodotto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.prezzo_prodotto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.prezzo_prodotto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.categoria_Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.categoria_Id)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>
+

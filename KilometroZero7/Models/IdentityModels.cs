@@ -46,5 +46,9 @@ namespace KilometroZero7.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<KilometroZero7.Models.Prodotti> Prodottis { get; set; }
+
+        public System.Data.Entity.DbSet<KilometroZero7.Models.Categorie> Categories { get; set; }
     }
 }
