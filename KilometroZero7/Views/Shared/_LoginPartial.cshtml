@@ -10,7 +10,7 @@
             <img src="@Url.Content("~/Content/Images/users/" + User.Identity.GetUserId() + ".jpg")" alt="" class="img-responsive img-circle img-user" />
         </li>
         <li>
-            @Html.ActionLink(" ", "Index", "Manage", routeValues: null, htmlAttributes: new {@class= "glyphicon glyphicon-tags", title = "Modifica password"})
+            @Html.ActionLink(" ", "ChangePassword", "Manage", routeValues: null, htmlAttributes: new {@class= "glyphicon glyphicon-tags", title = "Modifica password"})
         </li>
         <li><a href="javascript:document.getElementById('logoutForm').submit()"><span title="Log-out" class=" glyphicon glyphicon-log-out"></span></a></li>
     </ul>

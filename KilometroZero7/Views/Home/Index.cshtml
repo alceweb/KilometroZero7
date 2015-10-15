@@ -12,11 +12,11 @@
             <h1><span class="red">K</span>ilometro <span class="red">Z</span>ero</h1>
         </div>
         <div class="col-md-6 box1">
-            <h3 class="white">In che paese ti trovi?</h3>
-            @Html.DropDownList("Email", String.Empty)
-            <h3 >Che cosa stai cercando?</h3>
-            @Html.DropDownList("Email", String.Empty)
-
+            <h3 class="white">In che paese ti trovi?<br/>
+            @Html.DropDownList("Comune", String.Empty)</h3>
+            <h3 >Che cosa stai cercando?<br/>
+            @Html.TextBox("Nome_Prodotto")</h3>
+            <div class="btn btn-primary">Trova</div>
            @*<img class="img-responsive" src="/Content/Images/CaravaggioLente.jpg" />*@
         </div>
     </div>
@@ -24,45 +24,36 @@
 <div class="row">
 @foreach (var item in Model)
 {
-        <div class="col-xs-6 col-sm-3">
-            <a href="">
+        <div class="col-xs-6 col-sm-3 text-center">
 
                 <h3 class="text-center">@Html.DisplayFor(modelItem => item.nome_prodotto)</h3>
-                <h3>@Html.DisplayFor(modelItem => item.descrizione_prodotto)</h3>
-                @Html.DisplayNameFor(model => model.prezzo_prodotto)
-                @Html.DisplayFor(modelItem => item.prezzo_prodotto)<br />
-                @Html.DisplayNameFor(model => model.categoria_Id)
-                @Html.DisplayFor(modelItem => item.nome_categoria.nome_categoria)<br />
-                @Html.ActionLink("Details", "Details", new { id = item.prodotto_id })
-            </a>
+            <a href="@Url.Action("Details", "Home", new { id = item.prodotto_id })">
+                <img class="img-prodottto" src="@Url.Content("~/Content/Images/prodotti/" + @item.prodotto_id + ".jpg")" />
+            </a><br/>
+                Prezzo: @Html.DisplayFor(modelItem => item.prezzo_prodotto)<br />
+                Categoria: @Html.DisplayFor(modelItem => item.nome_categoria.nome_categoria)<br />
+            Utente: @Html.DisplayFor(modelItem => item.User.UserName)<br />
+                                
         </div>
     <!-- Add the extra clearfix for only the required viewport -->
     <div class="clearfix visible-xs-block"></div>
 }
     </div>
 
-
-
             <div class="row">
                 <div class="col-md-4 text-center">
                     <h1 class="glyphicon glyphicon-euro"></h1>
                     <h2>Sei un commerciante?</h2>
-                    <button type="button" data-loading-text="Loading..." class="btn btn-primary">
-                        Cogli l'occasione
-                    </button>
+                    @Html.ActionLink("Cogli l'occasione", "Commercianti", "Home", new { @class = "btn btn-primary" })
                 </div>
                 <div class="col-md-4 text-center">
                     <h1 class="glyphicon glyphicon-user"></h1>
                     <h2>Sei un cittadino?</h2>
-                    <button type="button" id="btnCittadino" data-loading-text="Loading..." class="btn btn-primary">
-                        Vivi la città
-                    </button>
+                    @Html.ActionLink("Vivi la città", "Cittadini", "Home", new { @class = "btn btn-primary"})
                 </div>
                 <div class="col-md-4 text-center">
-                    <h1 class="glyphicon glyphicon-home"></h1>
+                    <h1 class="glyphicon glyphicon-tower"></h1>
                     <h2>Comune</h2>
-                    <button type="button" id="btnComune" data-loading-text="Loading..." class="btn btn-primary">
-                        Offri opportunità
-                    </button>
+                    @Html.ActionLink("Offri l'opportunità", "Comuni", "Home", new { @class = "btn btn-primary" })
                 </div>
             </div>

@@ -46,6 +46,7 @@
                             <li>@Html.ActionLink("UsersAdmin", "Index", "UsersAdmin")</li>
                             <li>@Html.ActionLink("Categorie", "Index", "Categories")</li>
                             <li>@Html.ActionLink("Prodotti", "Index", "Prodottis")</li>
+                            <li>@Html.ActionLink("Comuni", "Index", "Comunis")</li>
                         }
                         @if (Request.IsAuthenticated && User.IsInRole("Commerciante"))
                         {
@@ -67,7 +68,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - Applicazione ASP.NET</p>
+            <p>&copy; @DateTime.Now.Year - KilometroZero - <span class="almishCesare"><a href="http://www.cr-consult.eu/zona-web">Almish<b>&</b>Cesàre<b>W</b>eb</a></span></p>
         </footer>
     </div>
 

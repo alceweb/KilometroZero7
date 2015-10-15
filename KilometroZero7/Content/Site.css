@@ -53,6 +53,16 @@ textarea {
     padding:13px;
     color:#f1f1f1;
 }
+.box1 input{
+    color:#000000;
+}
+.box1 select{color:#000000}
 .img-user{
     height:50px;
+}
+.img-prodottto{
+    height:200px;
+}
+.img-prodotto-big{
+    height:400px;
 }

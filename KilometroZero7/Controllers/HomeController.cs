@@ -1,11 +1,13 @@
-﻿using System;
+﻿using KilometroZero7.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Net.Mail;
 using System.Threading.Tasks;
-using KilometroZero7.Models;
 using System.Data;
 using System.Data.Entity;
 using System.Net;
@@ -14,18 +16,55 @@ namespace KilometroZero7.Controllers
 {
     public class HomeController : Controller
     {
+        public HomeController()
+        {
+
+        }
         private ApplicationDbContext db = new ApplicationDbContext();
+
+
+
+        private ApplicationUserManager _userManager;
+        public ApplicationUserManager UserManager
+        {
+            get
+            {
+                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+            private set
+            {
+                _userManager = value;
+            }
+        }
+
+
 
         public ActionResult Index()
         {
-            var comu = db.Users;
-            ViewBag.Email = new SelectList(comu, "Id", "Email", String.Empty);
-            var prodottis = db.Prodottis.OrderByDescending(p => p.prodotto_id).Where(p=>p.descrizione_prodotto.Contains("torta")).Include(p => p.nome_categoria);
+            var comu = db.Comunis;
+            ViewBag.Comune = new SelectList(comu, "ComuneId", "Comune", String.Empty);
+            var prodottis = db.Prodottis.
+                                OrderByDescending(p => p.prodotto_id).
+                                Where(p => p.attivo.Equals(true) &&
+                                        p.descrizione_prodotto.Contains(" ") &&
+                                        p.nome_categoria.nome_categoria != "var").
+                                Include(p => p.nome_categoria).
+                                Include(u=>u.User);
             return View(prodottis);
+        }
+
+        //GET: Home/test
+        public ActionResult Test()
+        {
+            var ut = db.Users;
+            return View(User);
+
         }
         // GET: Home/Details/5
         public ActionResult Details(int? id)
         {
+            var comu = db.Comunis;
+            ViewBag.Comune = new SelectList(comu, "ComuneId", "Comune", String.Empty);
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -35,8 +74,24 @@ namespace KilometroZero7.Controllers
             {
                 return HttpNotFound();
             }
-            return View(prodotti);
+            return View();
         }
+
+        //
+        // GET: /Home/DetailsComm/5
+        public async Task<ActionResult> DetailsComm(string id)
+        {
+            var user = await UserManager.FindByIdAsync(id);
+            return PartialView(user);
+        }
+
+        //
+        // GET: /Home/Cittadini
+        public ActionResult Cittadini()
+        {
+            return View();
+        }
+
 
         public ActionResult About()
         {

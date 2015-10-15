@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "Cittadini";
+}
+@{ var bkg = ViewBag.Title + "_s.jpg";}
+<div class="jumbotron" style="background-image:url(/Content/Images/@bkg)">
+    <div class="row">
+        <div class="col-md-6 ">
+            <h2><span class="red">Cittadini</span></h2>
+            @*<img alt="" class="img-responsive img-circle" src="/Content/Images/commercianti.jpg" />*@
+
+        </div>
+        <div class="col-md-6 box1">
+            <h3>Vivi la tua città e scoprila nuova!</h3>
+            @if (!Request.IsAuthenticated)
+            {
+                <h4>Per diventare un cittadino attivo registrati al portale</h4>
+                <h5>Se sei già registrato @Html.ActionLink("Accedi", "Login", "Account") </h5>
+                <h5>Se non sei registrato</h5>
+                <a class="btn btn-primary" href="/Account/register">Registrati a <span class="red">K</span>ilometro <span class="red">Z</span>ero.</a>
+            }
+
+            @if (Request.IsAuthenticated && !User.IsInRole("Commerciante") && !User.IsInRole("Comune"))
+            {
+                <h4>Per operare come commerciante devi essere accreditato dal tuo comune</h4>
+
+                <a class="btn btn-primary" href="KZeroCommercianti/Main">Accredita la tua attività</a>
+            }
+            @if (Request.IsAuthenticated && User.IsInRole("Commerciante"))
+            {
+                <h4>Gestisci i tuoi prodotti</h4>
+                <a class="btn btn-primary" href="KZeroCommercianti/Main">Entra</a>
+            }
+        </div>
+    </div>
+</div>
+
+

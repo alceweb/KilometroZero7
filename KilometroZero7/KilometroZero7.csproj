@@ -177,6 +177,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
+    <Compile Include="Controllers\ComunisController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProdottisController.cs" />
@@ -205,9 +206,26 @@
     <Compile Include="Migrations\201510020933094_prodotti1.Designer.cs">
       <DependentUpon>201510020933094_prodotti1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201510060749399_comuni.cs" />
+    <Compile Include="Migrations\201510060749399_comuni.Designer.cs">
+      <DependentUpon>201510060749399_comuni.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201510060755147_comuni1.cs" />
+    <Compile Include="Migrations\201510060755147_comuni1.Designer.cs">
+      <DependentUpon>201510060755147_comuni1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201510060757146_comuneid-int.cs" />
+    <Compile Include="Migrations\201510060757146_comuneid-int.Designer.cs">
+      <DependentUpon>201510060757146_comuneid-int.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201510060805376_comuniIdNull.cs" />
+    <Compile Include="Migrations\201510060805376_comuniIdNull.Designer.cs">
+      <DependentUpon>201510060805376_comuniIdNull.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminViewModel.cs" />
+    <Compile Include="Models\Comuni.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\MailCreditComune.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -223,6 +241,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Images\CaravaggioLente.jpg" />
     <Content Include="Content\Images\cittadini.jpg" />
+    <Content Include="Content\Images\cittadini_s.jpg" />
     <Content Include="Content\Images\commercianti.jpg" />
     <Content Include="Content\Images\Comuni.png" />
     <Content Include="Content\Images\Comuni_s.jpg" />
@@ -231,6 +250,9 @@
     <Content Include="Content\Images\Lontano.jpg" />
     <Content Include="Content\Images\commercianti_s.jpg" />
     <Content Include="Content\Images\principio_s.jpg" />
+    <Content Include="Content\Images\prodotti\14.jpg" />
+    <Content Include="Content\Images\prodotti\15.jpg" />
+    <Content Include="Content\Images\prodotti\16.jpg" />
     <Content Include="Content\Images\users\2b482e6a-10d6-469b-ae34-add4a6f733b8.JPG" />
     <Content Include="Content\Images\users\68248905-cbd5-473e-92c9-0e93c897e596.jpg" />
     <Content Include="Content\Images\users\8c71e491-9254-4bae-af78-3d41f278ffc0.JPG" />
@@ -320,6 +342,15 @@
     <Content Include="Views\Categories\Edit.cshtml" />
     <Content Include="Views\Categories\Index.cshtml" />
     <Content Include="Views\Home\Details.cshtml" />
+    <Content Include="Views\Home\Cittadini.cshtml" />
+    <Content Include="Views\Comunis\Create.cshtml" />
+    <Content Include="Views\Comunis\Delete.cshtml" />
+    <Content Include="Views\Comunis\Details.cshtml" />
+    <Content Include="Views\Comunis\Edit.cshtml" />
+    <Content Include="Views\Comunis\Index.cshtml" />
+    <Content Include="Views\Home\Test.cshtml" />
+    <Content Include="Views\Home\DetailsComm.cshtml" />
+    <Content Include="Views\Shared\_CercaPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -347,6 +378,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201510020933094_prodotti1.resx">
       <DependentUpon>201510020933094_prodotti1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201510060749399_comuni.resx">
+      <DependentUpon>201510060749399_comuni.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201510060755147_comuni1.resx">
+      <DependentUpon>201510060755147_comuni1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201510060757146_comuneid-int.resx">
+      <DependentUpon>201510060757146_comuneid-int.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201510060805376_comuniIdNull.resx">
+      <DependentUpon>201510060805376_comuniIdNull.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

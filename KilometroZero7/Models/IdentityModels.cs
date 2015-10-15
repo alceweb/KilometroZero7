@@ -17,7 +17,7 @@ namespace KilometroZero7.Models
         public string Telefono { get; set; }
         public string Indirizzo { get; set; }
         public string CAP { get; set; }
-        public string ComuneId { get; set; }
+        public int? ComuneId { get; set; }
 
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
@@ -50,5 +50,7 @@ namespace KilometroZero7.Models
         public System.Data.Entity.DbSet<KilometroZero7.Models.Prodotti> Prodottis { get; set; }
 
         public System.Data.Entity.DbSet<KilometroZero7.Models.Categorie> Categories { get; set; }
+
+        public System.Data.Entity.DbSet<KilometroZero7.Models.Comuni> Comunis { get; set; }
     }
 }

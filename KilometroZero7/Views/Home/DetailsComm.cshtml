@@ -1,0 +1,88 @@
+﻿@model Tuple<KilometroZero7.Models.Prodotti, KilometroZero7.Models.ApplicationUser>
+@{
+    ViewBag.Title = "KilometroZero";
+}
+@{ var bkg = ViewBag.Title + "_s.jpg";}
+<div class="jumbotron" style="background-image:url(/Content/Images/@bkg)">
+    <div class="row">
+        <div class="col-md-6 text-center">
+            <h1><span class="red">K</span>ilometro <span class="red">Z</span>ero</h1>
+        </div>
+        <div class="col-md-6 box1">
+            <h3 class="white">
+            </h3>
+            <h3>
+            </h3>
+            @*<img class="img-responsive" src="/Content/Images/CaravaggioLente.jpg" />*@
+        </div>
+    </div>
+</div>
+
+<h2>DetailsComm</h2>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Item2.UserName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Item2.UserName)
+        </dd>
+    </dl>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Item2.Nome)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Item2.Nome)
+        </dd>
+    </dl>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Item2.Cognome)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Item2.Cognome)
+        </dd>
+    </dl>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Item2.PartitaIva)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Item2.PartitaIva)
+        </dd>
+    </dl>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Item2.Telefono)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Item2.Telefono)
+        </dd>
+    </dl>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Item2.Indirizzo)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Item2.Indirizzo)
+        </dd>
+    </dl>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Item2.CAP)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Item2.CAP)
+        </dd>
+    </dl>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Item2.RagioneSociale)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Item2.RagioneSociale)
+        </dd>
+    </dl>
+</div>

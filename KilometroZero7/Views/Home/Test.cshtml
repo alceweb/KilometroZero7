@@ -1,0 +1,96 @@
+﻿
+@{
+    ViewBag.Title = "Test";
+}
+
+<h2>Test</h2>
+@{
+    var datb = User.Identity.Name.ToString();
+    <label>@datb jhgkjh </label>
+}
+
+            <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+    Launch demo modal
+</button>
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+            </div>
+            <div class="modal-body">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<hr/>
+<p>oggi è l'anno @DateTime.Now.Year mese @DateTime.Now.Month giorno @DateTime.Now.Day ora @DateTime.Now.Hour minuto @DateTime.Now.Minute secondo @DateTime.Now.Second</p>
+@{var tempo = "";
+    if (DateTime.Now.Hour < 12) {
+        tempo = "pomeriggio";
+    }
+    else
+    {
+        tempo = "mattino";
+    }
+}
+<p>adesso è @tempo</p>
+<p>
+    <label>Scrivi qui mio</label><br />
+    <input type="text" name="text3" />
+</p>
+@{ var mio = Request["text3"];
+    if (mio.AsInt() > 10)
+    {
+        <p>sopra il dieci</p>
+    }
+    else
+    {
+        <p>sotto il dieci</p>
+    }
+    }
+@{
+    var totale = "";
+    if (IsPost)
+    {
+        var num1 = Request["text1"];
+        var num2 = Request["text2"];
+        var total = num1.AsInt() + num2.AsInt();
+        var total1 = num2.AsInt() - num1.AsInt();
+        totale = "Le righe sono:" + total1;
+        <ul>
+            @for (var r = @num1.AsInt() ; r < @num2.AsInt() ; r++)
+            {
+                <li>line @r</li>
+            }
+        </ul>
+    }
+
+}
+
+
+    <form action="" method="post">
+        <p>
+            <label for="text1">Primo numero:</label><br>
+            <input type="text" name="text1" />
+        </p>
+        <p>
+            <label for="text2">Secondo nomero:</label><br>
+            <input type="text" name="text2" />
+        </p>
+        <p><input type="submit" value=" somma " /></p>
+    </form>
+<p>@totale</p>
+
+
+    @{ var messaggio = "Ciao parola!";}
+    @{var città = "Caravaggio";}
+    <p>Scrivo: @messaggio la città è @città</p>
