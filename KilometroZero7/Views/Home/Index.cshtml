@@ -32,7 +32,8 @@
             </a><br/>
                 Prezzo: @Html.DisplayFor(modelItem => item.prezzo_prodotto)<br />
                 Categoria: @Html.DisplayFor(modelItem => item.nome_categoria.nome_categoria)<br />
-            Utente: @Html.DisplayFor(modelItem => item.User.UserName)<br />
+            Commerciante: @Html.DisplayFor(modelItem => item.User.RagioneSociale)<br />
+            Indirizzo: @Html.DisplayFor(modelItem => item.User.Indirizzo)<br/>
                                 
         </div>
     <!-- Add the extra clearfix for only the required viewport -->

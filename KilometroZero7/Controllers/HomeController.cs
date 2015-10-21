@@ -64,17 +64,19 @@ namespace KilometroZero7.Controllers
         public ActionResult Details(int? id)
         {
             var comu = db.Comunis;
+            ViewData["Uti"] = db.Users;
             ViewBag.Comune = new SelectList(comu, "ComuneId", "Comune", String.Empty);
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+            ViewData["Prodotti"] = db.Prodottis;
             Prodotti prodotti = db.Prodottis.Find(id);
             if (prodotti == null)
             {
                 return HttpNotFound();
             }
-            return View();
+            return View(prodotti);
         }
 
         //

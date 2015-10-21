@@ -1,4 +1,4 @@
-﻿@model Tuple<KilometroZero7.Models.Prodotti, KilometroZero7.Models.ApplicationUser>
+﻿@model KilometroZero7.Models.Prodotti
 
 @{
     ViewBag.Title = "KilometroZero";
@@ -16,6 +16,7 @@
             </h3>
             <h3>
                 Che cosa stai cercando?<br />
+                @{ViewData["Prodotti"].ToString();}
             </h3>
             <div class="btn btn-primary">Trova</div>
             @*<img class="img-responsive" src="/Content/Images/CaravaggioLente.jpg" />*@
@@ -32,94 +33,51 @@
         </dt>
 
         <dd>
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-                Launch demo modal
-            </button>
-            <!-- Modal -->
-            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-                        </div>
-                        <div class="modal-body">
-                            @Html.DisplayNameFor(model => model.Item2.RagioneSociale)<br />
-                            @Html.DisplayFor(model => model.Item2.RagioneSociale)
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            
-                <h3>@Html.ActionLink("Dettagli del commerciante", "DetailsComm", new { id = @Html.DisplayFor(model => model.Item1.utente) }, new { @class = "modal" })</h3>
-                wqerqwerqwe
+             <h3><button class="btn btn-primary" onclick="window.open('@Url.Content("~/Home/DetailsComm/" + @Html.DisplayFor(model => model.utente))','_blank','scrollbars=1,resizable=1,toolbar=0,width=450,height=500','top=100,left=600')" class="buttonCredits">Dettagli commerciante</button></h3>
             <div id="my-dialog"></div>
-  <script type="text/javascript">
-    $(function () {
-        $('#my-dialog').dialog({
-            autoOpen: false,
-            width: 400,
-            resizable: false,
-            modal: true
-        });
-
-        $('.modal').click(function() {
-            $('#my-dialog').load(this.href, function() {
-                $(this).dialog('open');
-            })
-            return false;
-        });
-    });
-   </script>
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Item1.attivo)
+            @Html.DisplayNameFor(model => model.attivo)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Item1.attivo)
+            @Html.DisplayFor(model => model.attivo)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Item1.nome_prodotto)
+            @Html.DisplayNameFor(model => model.nome_prodotto)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Item1.nome_prodotto)
+            @Html.DisplayFor(model => model.nome_prodotto)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Item1.descrizione_prodotto)
+            @Html.DisplayNameFor(model => model.descrizione_prodotto)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Item1.descrizione_prodotto)
+            @Html.DisplayFor(model => model.descrizione_prodotto)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Item1.prezzo_prodotto)
+            @Html.DisplayNameFor(model => model.prezzo_prodotto)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Item1.prezzo_prodotto)
+            @Html.DisplayFor(model => model.prezzo_prodotto)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Item1.categoria_Id)
+            @Html.DisplayNameFor(model => model.categoria_Id)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Item1.categoria_Id)
+            @Html.DisplayFor(model => model.categoria_Id)
         </dd>
         <dd>
-            @{ var im = "~/Content/Images/prodotti/" + Html.DisplayFor(model => model.Item1.prodotto_id) + ".jpg";}
+            @{ var im = "~/Content/Images/prodotti/" + Html.DisplayFor(model => model.prodotto_id) + ".jpg";}
             <img class="img-prodottto-big" src="@Url.Content(@im)" />
         </dd>
     </dl>

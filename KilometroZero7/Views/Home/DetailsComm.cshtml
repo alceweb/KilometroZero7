@@ -1,88 +1,70 @@
-﻿@model Tuple<KilometroZero7.Models.Prodotti, KilometroZero7.Models.ApplicationUser>
-@{
-    ViewBag.Title = "KilometroZero";
-}
-@{ var bkg = ViewBag.Title + "_s.jpg";}
-<div class="jumbotron" style="background-image:url(/Content/Images/@bkg)">
-    <div class="row">
-        <div class="col-md-6 text-center">
-            <h1><span class="red">K</span>ilometro <span class="red">Z</span>ero</h1>
-        </div>
-        <div class="col-md-6 box1">
-            <h3 class="white">
-            </h3>
-            <h3>
-            </h3>
-            @*<img class="img-responsive" src="/Content/Images/CaravaggioLente.jpg" />*@
-        </div>
+﻿@model KilometroZero7.Models.ApplicationUser
+<head>
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+</head>
+<html>
+<body>
+    <h2>DetailsComm</h2>
+    <div >
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                Mail
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.UserName)
+            </dd>
+        </dl>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Nome)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Nome)
+                @Html.DisplayFor(model => model.Cognome)
+            </dd>
+        </dl>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.PartitaIva)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.PartitaIva)
+            </dd>
+        </dl>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Telefono)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Telefono)
+            </dd>
+        </dl>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Indirizzo)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Indirizzo)
+            </dd>
+        </dl>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.CAP)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.CAP)
+            </dd>
+        </dl>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.RagioneSociale)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.RagioneSociale)
+            </dd>
+        </dl>
     </div>
-</div>
-
-<h2>DetailsComm</h2>
-<div>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Item2.UserName)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Item2.UserName)
-        </dd>
-    </dl>
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Item2.Nome)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Item2.Nome)
-        </dd>
-    </dl>
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Item2.Cognome)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Item2.Cognome)
-        </dd>
-    </dl>
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Item2.PartitaIva)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Item2.PartitaIva)
-        </dd>
-    </dl>
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Item2.Telefono)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Item2.Telefono)
-        </dd>
-    </dl>
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Item2.Indirizzo)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Item2.Indirizzo)
-        </dd>
-    </dl>
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Item2.CAP)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Item2.CAP)
-        </dd>
-    </dl>
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Item2.RagioneSociale)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Item2.RagioneSociale)
-        </dd>
-    </dl>
-</div>
+</body>
+</html>
