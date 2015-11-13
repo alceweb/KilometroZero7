@@ -12,34 +12,25 @@
             <h1><span class="red">K</span>ilometro <span class="red">Z</span>ero</h1>
         </div>
         <div class="col-md-6 box1">
-            <h3 class="white">In che paese ti trovi?<br/>
-            @Html.DropDownList("Comune", String.Empty)</h3>
-            <h3 >Che cosa stai cercando?<br/>
-            @Html.TextBox("Nome_Prodotto")</h3>
-            <div class="btn btn-primary">Trova</div>
-           @*<img class="img-responsive" src="/Content/Images/CaravaggioLente.jpg" />*@
-        </div>
+            <h3>
+                In che città ti trovi?<br />
+                    @Html.DropDownList("Comune", null, String.Empty, new { @id = "ddlcomune" })
+                <button type="button" id="ScriviButton" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">
+                    Ok
+                </button>
+                <script>
+                        $('#ScriviButton').on('click', function () {
+                            $.cookie('comune', $('#ddlcomune').val());
+                            $('#lblcookie').text($.cookie('comune'));
+                            window.location.href = 'IndexCom';
+
+                        })
+                </script>
+                      </h3>
+            <h4>Perchè non vedo la mia città?</h4>
+               </div>
     </div>
 </div>
-<div class="row">
-@foreach (var item in Model)
-{
-        <div class="col-xs-6 col-sm-3 text-center">
-
-                <h3 class="text-center">@Html.DisplayFor(modelItem => item.nome_prodotto)</h3>
-            <a href="@Url.Action("Details", "Home", new { id = item.prodotto_id })">
-                <img class="img-prodottto" src="@Url.Content("~/Content/Images/prodotti/" + @item.prodotto_id + ".jpg")" />
-            </a><br/>
-                Prezzo: @Html.DisplayFor(modelItem => item.prezzo_prodotto)<br />
-                Categoria: @Html.DisplayFor(modelItem => item.nome_categoria.nome_categoria)<br />
-            Commerciante: @Html.DisplayFor(modelItem => item.User.RagioneSociale)<br />
-            Indirizzo: @Html.DisplayFor(modelItem => item.User.Indirizzo)<br/>
-                                
-        </div>
-    <!-- Add the extra clearfix for only the required viewport -->
-    <div class="clearfix visible-xs-block"></div>
-}
-    </div>
 
             <div class="row">
                 <div class="col-md-4 text-center">
@@ -58,3 +49,7 @@
                     @Html.ActionLink("Offri l'opportunità", "Comuni", "Home", new { @class = "btn btn-primary" })
                 </div>
             </div>
+@section scripts
+    {
+        <script type="text/javascript" src="~/Scripts/jquery.cookie.js"></script>
+    }

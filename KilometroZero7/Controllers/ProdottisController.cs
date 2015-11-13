@@ -15,25 +15,28 @@ namespace KilometroZero7.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
+
         // GET: Prodottis
         public ActionResult Index()
         {
-            if(User.IsInRole("Commerciante"))
+            if (User.IsInRole("Commerciante"))
             {
-            var ut = User.Identity.GetUserId();
-            var prodottis = db.Prodottis.OrderByDescending(p=>p.prodotto_id).Where(p=>p.utente== ut).Include(p => p.nome_categoria);
-             return View(prodottis);
-           }
+            var utente = User.Identity.GetUserId();
+            var prodottis = db.Prodottis.Include(p => p.nome_categoria).Where(p=>p.utente.Id == utente);
+            ViewBag.ProdottiCount = prodottis.Count();
+            return View(prodottis.ToList());
+            }
             else
             {
                 if (User.IsInRole("Admin"))
                 {
-                    var prodottis = db.Prodottis.OrderByDescending(p => p.prodotto_id).Include(p => p.nome_categoria);
-                    return View(prodottis);
+                    var prodottis = db.Prodottis.Include(p => p.nome_categoria);
+                    ViewBag.ProdottiCount = prodottis.Count();
+                    return View(prodottis.ToList());
                 }
             }
-                     return View();
-       }
+            return View();
+        }
 
         // GET: Prodottis/Details/5
         public ActionResult Details(int? id)
@@ -53,9 +56,7 @@ namespace KilometroZero7.Controllers
         // GET: Prodottis/Create
         public ActionResult Create()
         {
-            var ut = User.Identity.GetUserId();
             ViewBag.categoria_Id = new SelectList(db.Categories, "categoria_id", "nome_categoria");
-            ViewBag.utente = new SelectList(db.Users.Where(p=> p.Id == ut), "Id", "Email");
             return View();
         }
 
@@ -64,15 +65,18 @@ namespace KilometroZero7.Controllers
         // Per ulteriori dettagli, vedere http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "prodotto_id,utente,attivo,nome_prodotto,descrizione_prodotto,prezzo_prodotto,categoria_Id,UserId")] Prodotti prodotti)
+        public ActionResult Create([Bind(Include = "prodotto_id,attivo,nome_prodotto,descrizione_prodotto,prezzo_prodotto,categoria_Id")] Prodotti prodotti)
         {
-            var utente = User.Identity.GetUserId();
             if (ModelState.IsValid)
             {
+                var CurrentUMUser = User.Identity.GetUserId();
+                var CurrenUser = db.Users.Find(CurrentUMUser);
+                prodotti.utente = CurrenUser;
                 db.Prodottis.Add(prodotti);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+
             ViewBag.categoria_Id = new SelectList(db.Categories, "categoria_id", "nome_categoria", prodotti.categoria_Id);
             return View(prodotti);
         }
@@ -89,6 +93,7 @@ namespace KilometroZero7.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.categoria_Id = new SelectList(db.Categories, "categoria_id", "nome_categoria", prodotti.categoria_Id);
             return View(prodotti);
         }
 
@@ -97,7 +102,7 @@ namespace KilometroZero7.Controllers
         // Per ulteriori dettagli, vedere http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "prodotto_id,utente,attivo,nome_prodotto,descrizione_prodotto,prezzo_prodotto,categoria_Id")] Prodotti prodotti)
+        public ActionResult Edit([Bind(Include = "prodotto_id,attivo,nome_prodotto,descrizione_prodotto,prezzo_prodotto,categoria_Id")] Prodotti prodotti)
         {
             if (ModelState.IsValid)
             {
@@ -105,6 +110,7 @@ namespace KilometroZero7.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.categoria_Id = new SelectList(db.Categories, "categoria_id", "nome_categoria", prodotti.categoria_Id);
             return View(prodotti);
         }
 

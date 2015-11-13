@@ -1,28 +1,5 @@
 ﻿@model KilometroZero7.Models.Prodotti
-
-@{
-    ViewBag.Title = "KilometroZero";
-}
 @{ var bkg = ViewBag.Title + "_s.jpg";}
-<div class="jumbotron" style="background-image:url(/Content/Images/@bkg)">
-    <div class="row">
-        <div class="col-md-6 text-center">
-            <h1><span class="red">K</span>ilometro <span class="red">Z</span>ero</h1>
-        </div>
-        <div class="col-md-6 box1">
-            <h3 class="white">
-                In che paese ti trovi?<br />
-                @Html.DropDownList("Comune", String.Empty)
-            </h3>
-            <h3>
-                Che cosa stai cercando?<br />
-                @{ViewData["Prodotti"].ToString();}
-            </h3>
-            <div class="btn btn-primary">Trova</div>
-            @*<img class="img-responsive" src="/Content/Images/CaravaggioLente.jpg" />*@
-        </div>
-    </div>
-</div>
 
 <h2>Dettaglio prodotto</h2>
 <div>
@@ -32,10 +9,6 @@
             
         </dt>
 
-        <dd>
-             <h3><button class="btn btn-primary" onclick="window.open('@Url.Content("~/Home/DetailsComm/" + @Html.DisplayFor(model => model.utente))','_blank','scrollbars=1,resizable=1,toolbar=0,width=450,height=500','top=100,left=600')" class="buttonCredits">Dettagli commerciante</button></h3>
-            <div id="my-dialog"></div>
-        </dd>
 
         <dt>
             @Html.DisplayNameFor(model => model.attivo)
@@ -70,11 +43,41 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.categoria_Id)
+            @Html.DisplayNameFor(model => model.nome_categoria)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.categoria_Id)
+            @Html.DisplayFor(model => model.nome_categoria.nome_categoria)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.utente.RagioneSociale)
+        </dt>
+        <dd>
+            
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#myModal">
+                @Html.DisplayFor(model => model.utente.RagioneSociale)
+            </button>
+            <!-- Modal -->
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Dettagli venditore</h4>
+                        </div>
+                        <div class="modal-body">
+                            @Html.DisplayFor(model => model.utente.RagioneSociale)<br/>
+                            @Html.DisplayFor(model => model.utente.Indirizzo)<br />
+                            @Html.DisplayFor(model => model.utente.Telefono)<br />
+                            @Html.DisplayFor(model => model.utente.Email)<br />
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>            
         </dd>
         <dd>
             @{ var im = "~/Content/Images/prodotti/" + Html.DisplayFor(model => model.prodotto_id) + ".jpg";}

@@ -37,32 +37,75 @@ namespace KilometroZero7.Controllers
             }
         }
 
-
-
         public ActionResult Index()
         {
-            var comu = db.Comunis;
-            ViewBag.Comune = new SelectList(comu, "ComuneId", "Comune", String.Empty);
+            if (Request.Cookies["comune"] != null)
+            {
+                return RedirectToAction("Indexcom");
+            }
+            else
+            {
+                var comu = db.Comunis;
+                ViewBag.Comune = new SelectList(comu, "Comune", "Comune", String.Empty);
+                return View();
+            }
+        }
+        public ActionResult IndexCom()
+        {
             var prodottis = db.Prodottis.
-                                OrderByDescending(p => p.prodotto_id).
-                                Where(p => p.attivo.Equals(true) &&
-                                        p.descrizione_prodotto.Contains(" ") &&
-                                        p.nome_categoria.nome_categoria != "var").
-                                Include(p => p.nome_categoria).
-                                Include(u=>u.User);
+                OrderByDescending(p => p.prodotto_id).
+                Where(p => p.attivo.Equals(true) &&
+                p.descrizione_prodotto.Contains(" ") &&
+                p.nome_categoria.nome_categoria != "var").
+                Include(p => p.nome_categoria).
+                Include(u => u.utente);
+            if (Request.Cookies["comune"] != null)
+            {
+                    ViewBag.comune = Request.Cookies["comune"].Value;
+                    return View(prodottis);
+            }
             return View(prodottis);
         }
+
+        public ActionResult cookie()
+        {
+            return View();
+        }
+        
+        public ActionResult DelCookie()
+        {
+            return View();
+        }
+        public ActionResult CancellaCookie()
+        {
+            if (Request.Cookies["comune"] != null)
+            {
+                HttpCookie myCookie = new HttpCookie("comune");
+                myCookie.Expires = DateTime.Now.AddDays(-1d);
+                Response.Cookies.Add(myCookie);
+                return View("Index");
+            }
+            else
+            {
+                return View();
+            }
+        }
+        public ActionResult TestCookie()
+        {
+                return View();
+        }
+
 
         //GET: Home/test
         public ActionResult Test()
         {
-            var ut = db.Users;
-            return View(User);
+            return View();
 
         }
         // GET: Home/Details/5
         public ActionResult Details(int? id)
         {
+            ViewBag.Title = "KilometroZero";
             var comu = db.Comunis;
             ViewData["Uti"] = db.Users;
             ViewBag.Comune = new SelectList(comu, "ComuneId", "Comune", String.Empty);

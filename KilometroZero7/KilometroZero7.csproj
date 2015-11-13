@@ -198,38 +198,16 @@
     <Compile Include="Migrations\201509251205463_RagioneSociale.Designer.cs">
       <DependentUpon>201509251205463_RagioneSociale.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201510020916261_prodotti.cs" />
-    <Compile Include="Migrations\201510020916261_prodotti.Designer.cs">
-      <DependentUpon>201510020916261_prodotti.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201510020933094_prodotti1.cs" />
-    <Compile Include="Migrations\201510020933094_prodotti1.Designer.cs">
-      <DependentUpon>201510020933094_prodotti1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201510060749399_comuni.cs" />
-    <Compile Include="Migrations\201510060749399_comuni.Designer.cs">
-      <DependentUpon>201510060749399_comuni.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201510060755147_comuni1.cs" />
-    <Compile Include="Migrations\201510060755147_comuni1.Designer.cs">
-      <DependentUpon>201510060755147_comuni1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201510060757146_comuneid-int.cs" />
-    <Compile Include="Migrations\201510060757146_comuneid-int.Designer.cs">
-      <DependentUpon>201510060757146_comuneid-int.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201510060805376_comuniIdNull.cs" />
-    <Compile Include="Migrations\201510060805376_comuniIdNull.Designer.cs">
-      <DependentUpon>201510060805376_comuniIdNull.cs</DependentUpon>
+    <Compile Include="Migrations\201511041704173_ProCatCom.cs" />
+    <Compile Include="Migrations\201511041704173_ProCatCom.Designer.cs">
+      <DependentUpon>201511041704173_ProCatCom.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminViewModel.cs" />
-    <Compile Include="Models\Comuni.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\MailCreditComune.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\Products.cs" />
     <Compile Include="Models\UserInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -250,26 +228,35 @@
     <Content Include="Content\Images\Lontano.jpg" />
     <Content Include="Content\Images\commercianti_s.jpg" />
     <Content Include="Content\Images\principio_s.jpg" />
-    <Content Include="Content\Images\prodotti\14.jpg" />
-    <Content Include="Content\Images\prodotti\15.jpg" />
-    <Content Include="Content\Images\prodotti\16.jpg" />
-    <Content Include="Content\Images\users\2b482e6a-10d6-469b-ae34-add4a6f733b8.JPG" />
-    <Content Include="Content\Images\users\68248905-cbd5-473e-92c9-0e93c897e596.jpg" />
+    <Content Include="Content\Images\prodotti\1.jpg" />
+    <Content Include="Content\Images\prodotti\7.jpg" />
+    <Content Include="Content\Images\prodotti\9.jpg" />
+    <Content Include="Content\Images\prodotti\8.jpg" />
+    <Content Include="Content\Images\prodotti\2.jpg" />
+    <Content Include="Content\Images\prodotti\3.jpg" />
+    <Content Include="Content\Images\prodotti\4.jpg" />
+    <Content Include="Content\Images\prodotti\5.jpg" />
+    <Content Include="Content\Images\prodotti\6.jpg" />
+    <Content Include="Content\Images\users\33476f37-9b77-4137-b1d1-88016e948ea7.JPG" />
+    <Content Include="Content\Images\users\f1ab0bed-8fe7-49de-bed7-5833627a2f15.jpg" />
     <Content Include="Content\Images\users\8c71e491-9254-4bae-af78-3d41f278ffc0.JPG" />
-    <Content Include="Content\Images\users\a8323dba-75a2-487b-87e1-faa18b4aeff5.jpg" />
+    <Content Include="Content\Images\users\8cf1c724-e4cd-4e80-b251-076affe97a29.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="index.html" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <None Include="Properties\PublishProfiles\KilometroZero.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.cookie.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -331,26 +318,31 @@
     <Content Include="Views\Home\Comuni.cshtml" />
     <Content Include="Views\Home\MailCreditComune.cshtml" />
     <Content Include="Views\Home\SentCreditComune.cshtml" />
+    <Content Include="Views\Home\Details.cshtml" />
+    <Content Include="Views\Home\Cittadini.cshtml" />
+    <Content Include="Views\Home\Test.cshtml" />
+    <Content Include="Views\Home\DetailsComm.cshtml" />
+    <Content Include="Views\Shared\_CercaPartial.cshtml" />
     <Content Include="Views\Prodottis\Create.cshtml" />
     <Content Include="Views\Prodottis\Delete.cshtml" />
     <Content Include="Views\Prodottis\Details.cshtml" />
     <Content Include="Views\Prodottis\Edit.cshtml" />
     <Content Include="Views\Prodottis\Index.cshtml" />
-    <Content Include="Views\Categories\Create.cshtml" />
-    <Content Include="Views\Categories\Delete.cshtml" />
-    <Content Include="Views\Categories\Details.cshtml" />
-    <Content Include="Views\Categories\Edit.cshtml" />
-    <Content Include="Views\Categories\Index.cshtml" />
-    <Content Include="Views\Home\Details.cshtml" />
-    <Content Include="Views\Home\Cittadini.cshtml" />
     <Content Include="Views\Comunis\Create.cshtml" />
     <Content Include="Views\Comunis\Delete.cshtml" />
     <Content Include="Views\Comunis\Details.cshtml" />
     <Content Include="Views\Comunis\Edit.cshtml" />
     <Content Include="Views\Comunis\Index.cshtml" />
-    <Content Include="Views\Home\Test.cshtml" />
-    <Content Include="Views\Home\DetailsComm.cshtml" />
-    <Content Include="Views\Shared\_CercaPartial.cshtml" />
+    <Content Include="Views\Categories\Create.cshtml" />
+    <Content Include="Views\Categories\Delete.cshtml" />
+    <Content Include="Views\Categories\Details.cshtml" />
+    <Content Include="Views\Categories\Edit.cshtml" />
+    <Content Include="Views\Categories\Index.cshtml" />
+    <Content Include="Views\UsersAdmin\IndexCom.cshtml" />
+    <Content Include="Views\Home\IndexCom.cshtml" />
+    <Content Include="Views\Home\TestCookie.cshtml" />
+    <Content Include="Views\Home\cookie.cshtml" />
+    <Content Include="Views\Home\DelCookie.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -373,23 +365,8 @@
     <EmbeddedResource Include="Migrations\201509251205463_RagioneSociale.resx">
       <DependentUpon>201509251205463_RagioneSociale.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201510020916261_prodotti.resx">
-      <DependentUpon>201510020916261_prodotti.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201510020933094_prodotti1.resx">
-      <DependentUpon>201510020933094_prodotti1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201510060749399_comuni.resx">
-      <DependentUpon>201510060749399_comuni.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201510060755147_comuni1.resx">
-      <DependentUpon>201510060755147_comuni1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201510060757146_comuneid-int.resx">
-      <DependentUpon>201510060757146_comuneid-int.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201510060805376_comuniIdNull.resx">
-      <DependentUpon>201510060805376_comuniIdNull.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201511041704173_ProCatCom.resx">
+      <DependentUpon>201511041704173_ProCatCom.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

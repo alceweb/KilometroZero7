@@ -1,0 +1,58 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>cookie</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/jquery.cookie.js"></script>
+</head>
+<body>
+    <div id="txtdiv"> nome città<input id="txtcookie" type="text" />
+        <button type="button" id="scrivi" data-complete-text="finished!" class="btn btn-primary" autocomplete="off">
+            scrivi
+        </button>
+        <script>
+            var txt = $("#txtcookie")
+            $("#scrivi").on("click", function () {
+                $.cookie("cookcomune", "cazzo");
+                $("#cookspan").text($.cookie("cookcomune"));
+                alert("scritto");
+    })
+        </script>
+        <button type="button" id="cancella" data-complete-text="finished!" class="btn btn-primary" autocomplete="off">
+            cancella
+        </button>
+        <script>
+    $("#cancella").on("click", function () {
+
+        $.removeCookie("cookcomune");
+      alert("cancellato");
+      $("#cookspan").text("");
+    })
+        </script>
+        <button type="button" id="leggi" data-complete-text="finished!" class="btn btn-primary" autocomplete="off">
+            leggi
+        </button>
+        <script>
+            
+    $("#leggi").on("click", function () {
+
+        alert($.cookie("cookcomune"));
+        $("#cookspan").text($.cookie("cookcomune"));
+    })
+        </script>
+        <h2 id="cookspan"></h2>
+
+        </div>
+    <a href="/Home/Index/">Torna</a>
+    <hr />
+</body>
+</html>

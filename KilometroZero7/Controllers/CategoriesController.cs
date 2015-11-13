@@ -17,6 +17,7 @@ namespace KilometroZero7.Controllers
         // GET: Categories
         public ActionResult Index()
         {
+            ViewBag.CategorieCount = db.Categories.Count();
             return View(db.Categories.ToList());
         }
 

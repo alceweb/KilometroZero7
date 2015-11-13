@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "DelCookie";
+}
+
+<h2>DelCookie</h2>
+<label id="lblcookie"></label>
+Scrivi la città: <input type="text" id="txtcookie" />
+<button type="button" id="DelButton" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">
+    Cancella cookie comune
+</button>
+<script>
+    $('#DelButton').on('click', function () {
+        $.removeCookie('comune');
+        $(this).text('rimosso');
+        $('#LeggiButton').text('leggi');
+        $('ScriviButton').text('Scrivi');
+        $('#lblcookie').text($.cookie('comune'));
+
+    })
+</script>
+<button type="button" id="LeggiButton" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">
+   Leggi cookie comune
+</button>
+<script>
+    $('#LeggiButton').on('click', function () {
+        $('#lblcookie').text($.cookie('comune'));
+        $(this).text('letto');
+        $('#DelButton').text('cancella');
+        $('ScriviButton').text('Scrivi');
+    })
+</script>
+<button type="button" id="ScriviButton" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">
+    Scrivi cookie comune
+</button>
+<script>
+    $('#ScriviButton').on('click', function () {
+        $(this).text('scritto');
+        $('#LeggiButton').text('leggi');
+        $.cookie('comune', $('#txtcookie').val());
+        $('#DelButton').text('cancella');
+        $('#lblcookie').text($.cookie('comune'));
+
+    })
+</script>
+@ViewBag.comune
+<hr />
+@section scripts
+    {
+    <script type="text/javascript" src="~/Scripts/jquery.cookie.js"></script>
+}

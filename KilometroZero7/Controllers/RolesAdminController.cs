@@ -55,6 +55,7 @@ namespace KilometroZero7.Controllers
         // GET: /Roles/
         public ActionResult Index()
         {
+            ViewBag.RolesCount = RoleManager.Roles.Count();
             return View(RoleManager.Roles);
         }
 

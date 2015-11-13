@@ -7,15 +7,12 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <a href="~/Prodottis/Create" class="btn btn-primary"><span class="badge">@ViewBag.ProdottiCount</span> Nuovo</a>
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.prodotto_id)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.utente)
+            @Html.DisplayNameFor(model => model.nome_categoria.nome_categoria)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.attivo)
@@ -29,19 +26,13 @@
         <th>
             @Html.DisplayNameFor(model => model.prezzo_prodotto)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.categoria_Id)
-        </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.prodotto_id)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.utente)
+            @Html.DisplayFor(modelItem => item.nome_categoria.nome_categoria)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.attivo)
@@ -54,9 +45,6 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.prezzo_prodotto)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.nome_categoria.nome_categoria)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.prodotto_id }) |

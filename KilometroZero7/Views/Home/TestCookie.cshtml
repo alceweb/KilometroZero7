@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "TestCookie";
+}
+
+<h2>TestCookie</h2>
+@{
+    if (IsPost)
+    {
+        var comune = Request["text1"];
+        Response.Cookies["comune"]["città"] = comune;
+        Response.Cookies["comune"]["data"] = DateTime.Now.ToString();
+        Response.Cookies["comune"].Expires = DateTime.Now.AddDays(10d);
+        if (Request.Cookies["comune"] != null)
+        {
+            ViewBag.comune = Request.Cookies["comune"]["città"];
+            ViewBag.data = Request.Cookies["comune"]["data"];
+            <p>Questo è il cookie comune: <strong>@ViewBag.comune</strong></p>
+            <p>Scritto il : <strong>@ViewBag.data </strong></p>
+
+        }
+        else
+        {
+            ViewBag.comune = "cookie scaduto";
+        }
+    }
+}
+<form action="" method="post">
+    <p>
+        <label for="text1" >questo è il cookie comune</label>
+        <input type="text" placeholder="scrivi la città" name="text1"/>
+    </p>
+    <p>
+        <input type="submit" value="esegui" />
+
+    </p>
+</form>
+@ViewBag.comune

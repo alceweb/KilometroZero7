@@ -4,6 +4,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System.ComponentModel.DataAnnotations;
 
 namespace KilometroZero7.Models
 {
@@ -27,6 +28,37 @@ namespace KilometroZero7.Models
             // Aggiungere qui i reclami utente personalizzati
             return userIdentity;
         }
+    }
+
+        public class Prodotti
+    {
+        [Key]
+        public int prodotto_id { get; set; }
+        public virtual ApplicationUser utente { get; set; }
+        public bool attivo { get; set; }
+        public string nome_prodotto { get; set; }
+        public string descrizione_prodotto { get; set; }
+        public decimal prezzo_prodotto { get; set; }
+        public int categoria_Id { get; set; }
+        public virtual Categorie nome_categoria { get; set; }
+    }
+
+    public class Categorie
+    {
+        [Key]
+        public int categoria_id { get; set; }
+        public string nome_categoria { get; set; }
+    }
+    public class Comuni
+    {
+        [Key]
+        public int ComuneId { get; set; }
+        public string NomeRiferimento { get; set; }
+        public string TelRiferimento { get; set; }
+        public string Comune { get; set; }
+        public string Provincia { get; set; }
+        public string Regione { get; set; }
+
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>

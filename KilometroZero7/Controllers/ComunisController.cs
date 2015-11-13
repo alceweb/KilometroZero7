@@ -17,6 +17,7 @@ namespace KilometroZero7.Controllers
         // GET: Comunis
         public ActionResult Index()
         {
+            ViewBag.ComuniCount = db.Comunis.Count();
             return View(db.Comunis.ToList());
         }
 

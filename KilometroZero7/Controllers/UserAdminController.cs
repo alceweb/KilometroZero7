@@ -56,7 +56,16 @@ namespace KilometroZero7.Controllers
         [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Index()
         {
+            ViewBag.UtentiCount = UserManager.Users.Count();
             return View(await UserManager.Users.ToListAsync());
+        }
+
+        // GET: /Users/IndexCom
+        [Authorize(Roles = "Comune")]
+        public async Task<ActionResult> IndexCom()
+        {
+            ViewBag.UtentiCount = UserManager.Users.Where(c => c.ComuneId == 1).Count();
+            return View(await UserManager.Users.Where(c=>c.ComuneId== 1).ToListAsync());
         }
 
         //

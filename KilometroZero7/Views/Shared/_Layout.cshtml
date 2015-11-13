@@ -9,7 +9,7 @@
     <title>@ViewBag.Title - Applicazione ASP.NET</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -20,11 +20,12 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="~/"><span class="red">K</span>ilometro <span class="red">Z</span>ero</a>
+                <a class="navbar-brand" href="~/Home/Index"><span class="red">K</span>ilometro <span class="red">Z</span>ero</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Il principio", "Principio", "Home")</li>
+                    <li><a href="/Home/Index">Home</a>
+                    <li>@Html.ActionLink("Principio", "Principio", "Home")</li>
                     <li>@Html.ActionLink("Commercianti", "Commercianti", "Home")</li>
                     <li>@Html.ActionLink("Comuni", "Comuni", "Home")</li>
                 </ul>
@@ -51,13 +52,14 @@
                         @if (Request.IsAuthenticated && User.IsInRole("Commerciante"))
                         {
                             <li class="red">Commercianti </li>
-                            <li><a href="/Prodottis/Index">Prodotti <span class="badge">42</span></a></li>
+                            <li>
+                        <a href="/Prodottis/Index">Prodotti</a></li>
                             <li>@Html.ActionLink("Profilo", "DetailsComm", "UsersAdmin")</li>
                         }
                         @if (Request.IsAuthenticated && User.IsInRole("Comune"))
                         {
                             <li class="red">Comune</li>
-                            <li>@Html.ActionLink("Gestisci commercianti", "DetailsComm", "UsersAdmin")</li>
+                            <li>@Html.ActionLink("Gestisci commercianti", "IndexCom", "UsersAdmin")</li>
                         }
                     </ul>
                 </div>
