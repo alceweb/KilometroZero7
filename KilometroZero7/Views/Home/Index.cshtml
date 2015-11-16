@@ -1,54 +1,59 @@
-﻿@model IEnumerable<KilometroZero7.Models.Prodotti>
-
+﻿
 @{
     ViewBag.Title = "KilometroZero";
 }
 @{ var bkg = ViewBag.Title + "_s.jpg";}
 
 
-<div class="jumbotron" style="background-image:url(/Content/Images/@bkg)">
+<div class="jumbo">
+    <img class="img-bg" src="~/Content/Images/bg_1920x1080.jpg" />
     <div class="row">
-        <div class="col-md-6 text-center">
-            <h1><span class="red">K</span>ilometro <span class="red">Z</span>ero</h1>
-        </div>
-        <div class="col-md-6 box1">
-            <h3>
+        <div class="col-md-6 ">
+            <h1>
                 In che città ti trovi?<br />
-                    @Html.DropDownList("Comune", null, String.Empty, new { @id = "ddlcomune" })
+                    @Html.DropDownList("Comune", null, String.Empty, new { @id = "ddlcomune", @class = "red1"})
                 <button type="button" id="ScriviButton" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">
                     Ok
                 </button>
                 <script>
-                        $('#ScriviButton').on('click', function () {
-                            $.cookie('comune', $('#ddlcomune').val());
+                    $('#ScriviButton').on('click', function () {
+                        if ($('#ddlcomune').val() != "") {
+                            $.cookie('comune', $('#ddlcomune').val(), { path: '/' });
                             $('#lblcookie').text($.cookie('comune'));
                             window.location.href = 'IndexCom';
-
+                        }
+                        else {
+                            alert("scegli una città dall'elenco");
+                        }
                         })
                 </script>
-                      </h3>
-            <h4>Perchè non vedo la mia città?</h4>
-               </div>
+                      </h1>
+            <h4></h4>
+            <!-- Button trigger modal -->
+            <a href="# " data-toggle="modal" data-target="#myModal">
+                Perchè non vedo la mia città?
+            </a>
+            <!-- Modal -->
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content ">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">La tua città non è nell'elenco?</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>se non trovi la tua città vuol dire che il tuo comune non si è iscritto a <span class="red">K</span>ilometro <span class="red">Z</span>ero!</p>
+                            <p>Solo i comuni iscritti sono visibili sul portale.</p>
+                            <p>@Html.ActionLink("Visualizza l'elenco dei comuni iscritti", "ComuniIscritti", "Home")</p>
+                        </div>
+                        <div class="modal-footer">
+                        </div>
+                    </div>
+                </div>
+            </div>              </div>
     </div>
 </div>
 
-            <div class="row">
-                <div class="col-md-4 text-center">
-                    <h1 class="glyphicon glyphicon-euro"></h1>
-                    <h2>Sei un commerciante?</h2>
-                    @Html.ActionLink("Cogli l'occasione", "Commercianti", "Home", new { @class = "btn btn-primary" })
-                </div>
-                <div class="col-md-4 text-center">
-                    <h1 class="glyphicon glyphicon-user"></h1>
-                    <h2>Sei un cittadino?</h2>
-                    @Html.ActionLink("Vivi la città", "Cittadini", "Home", new { @class = "btn btn-primary"})
-                </div>
-                <div class="col-md-4 text-center">
-                    <h1 class="glyphicon glyphicon-tower"></h1>
-                    <h2>Comune</h2>
-                    @Html.ActionLink("Offri l'opportunità", "Comuni", "Home", new { @class = "btn btn-primary" })
-                </div>
-            </div>
 @section scripts
     {
         <script type="text/javascript" src="~/Scripts/jquery.cookie.js"></script>

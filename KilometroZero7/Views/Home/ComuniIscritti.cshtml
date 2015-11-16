@@ -1,0 +1,48 @@
+﻿@model IEnumerable<KilometroZero7.Models.Comuni>
+
+<h3>@{
+    ViewBag.Title = "ComuniIscritti";
+}
+</h3>
+<h2>Comuni iscritti a <span class="red">K</span>ilometro <span class="red">Z</span>ero</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NomeRiferimento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TelRiferimento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Comune)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Provincia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Regione)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NomeRiferimento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TelRiferimento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Comune)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Provincia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Regione)
+        </td>
+    </tr>
+}
+
+</table>

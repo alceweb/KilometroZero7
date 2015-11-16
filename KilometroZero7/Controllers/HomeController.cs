@@ -45,26 +45,41 @@ namespace KilometroZero7.Controllers
             }
             else
             {
-                var comu = db.Comunis;
-                ViewBag.Comune = new SelectList(comu, "Comune", "Comune", String.Empty);
+                var comu = db.Comunis.OrderBy(c=>c.Comune);
+                ViewBag.Comune = new SelectList(comu, "Comune", "Comune");
                 return View();
             }
         }
+
         public ActionResult IndexCom()
         {
+            var comu = db.Comunis;
+            ViewData["comuneid"] = new SelectList(comu);
+            if (Request.Cookies["comune"] != null)
+            {
+                ViewBag.comune = Request.Cookies["comune"].Value;
+            }
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult IndexCom([Bind(Include = "prodotto_id,attivo,nome_prodotto,descrizione_prodotto,prezzo_prodotto,categoria_Id")] Prodotti prodotti)
+        {
+            ViewBag.Text1 = "gonna";
             var prodottis = db.Prodottis.
                 OrderByDescending(p => p.prodotto_id).
                 Where(p => p.attivo.Equals(true) &&
-                p.descrizione_prodotto.Contains(" ") &&
+                p.descrizione_prodotto.Contains("gonna") &&
                 p.nome_categoria.nome_categoria != "var").
                 Include(p => p.nome_categoria).
                 Include(u => u.utente);
-            if (Request.Cookies["comune"] != null)
-            {
-                    ViewBag.comune = Request.Cookies["comune"].Value;
-                    return View(prodottis);
-            }
             return View(prodottis);
+        }
+
+        public ActionResult ComuniIscritti()
+        {
+            var Comuni = db.Comunis.OrderBy(c => c.Comune);
+            return View(Comuni);
         }
 
         public ActionResult cookie()
@@ -99,7 +114,17 @@ namespace KilometroZero7.Controllers
         //GET: Home/test
         public ActionResult Test()
         {
-            return View();
+            if (Request.Cookies["comune"] != null)
+            {
+                return RedirectToAction("Indexcom");
+            }
+            else
+            {
+                var comu = db.Comunis.OrderBy(c => c.Comune);
+                ViewBag.Comune = new SelectList(comu, "Comune", "Comune", String.Empty);
+                ViewData["comune"] = new SelectList(comu);
+                return View(comu);
+            }
 
         }
         // GET: Home/Details/5

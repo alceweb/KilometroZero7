@@ -28,38 +28,42 @@
                     <li>@Html.ActionLink("Principio", "Principio", "Home")</li>
                     <li>@Html.ActionLink("Commercianti", "Commercianti", "Home")</li>
                     <li>@Html.ActionLink("Comuni", "Comuni", "Home")</li>
-                </ul>
+                    @if (Request.IsAuthenticated)
+                    {
+                    <li>
+                        <a href="#" title="Pannelo controllo"><span class="glyphicon glyphicon-cog" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"></span></a>
+                    </li>
+                    }
+                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
                 <div  class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
+                    <ul class="nav navbar-nav collapse" id="collapseExample">
 
                         @if (Request.IsAuthenticated && !User.IsInRole("Admin") && !User.IsInRole("Commerciante") && !User.IsInRole("Comune"))
                         {
-                            <li class="red">Utente registrato</li>
-                            <li>@Html.ActionLink("Profilo", "Index", "RolesAdmin")</li>
+                                <li>@Html.ActionLink("Profilo", "Index", "RolesAdmin")</li>
                         }
 
-                        @if (Request.IsAuthenticated && User.IsInRole("Admin"))
-                        {
-                            <li class="red">Admin</li>
-                            <li>@Html.ActionLink("RolesAdmin", "Index", "RolesAdmin")</li>
-                            <li>@Html.ActionLink("UsersAdmin", "Index", "UsersAdmin")</li>
-                            <li>@Html.ActionLink("Categorie", "Index", "Categories")</li>
-                            <li>@Html.ActionLink("Prodotti", "Index", "Prodottis")</li>
-                            <li>@Html.ActionLink("Comuni", "Index", "Comunis")</li>
-                        }
+
                         @if (Request.IsAuthenticated && User.IsInRole("Commerciante"))
                         {
-                            <li class="red">Commercianti </li>
-                            <li>
-                        <a href="/Prodottis/Index">Prodotti</a></li>
-                            <li>@Html.ActionLink("Profilo", "DetailsComm", "UsersAdmin")</li>
+                                    <li>
+                                        <a href="/Prodottis/Index">Prodotti</a>
+                                    </li>
+                                    <li>@Html.ActionLink("Profilo", "DetailsComm", "UsersAdmin")</li>
                         }
                         @if (Request.IsAuthenticated && User.IsInRole("Comune"))
                         {
-                            <li class="red">Comune</li>
-                            <li>@Html.ActionLink("Gestisci commercianti", "IndexCom", "UsersAdmin")</li>
+                                    <li>@Html.ActionLink("Gestisci commercianti", "IndexCom", "UsersAdmin")</li>
+                        }
+                        @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+                        {
+                            <li>@Html.ActionLink("RolesAdmin", "Index", "RolesAdmin")</li>
+                                <li>@Html.ActionLink("UsersAdmin", "Index", "UsersAdmin")</li>
+                                <li>@Html.ActionLink("Categorie", "Index", "Categories")</li>
+                                <li>@Html.ActionLink("Prodotti", "Index", "Prodottis")</li>
+                                <li>@Html.ActionLink("Comuni", "Index", "Comunis")</li>
                         }
                     </ul>
                 </div>
@@ -68,9 +72,8 @@
     </div>
     <div class="container body-content">
         @RenderBody()
-        <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - KilometroZero - <span class="almishCesare"><a href="http://www.cr-consult.eu/zona-web">Almish<b>&</b>Cesàre<b>W</b>eb</a></span></p>
+            <span>&copy; @DateTime.Now.Year - KilometroZero - <span class="almishCesare"><a href="http://www.cr-consult.eu/zona-web">Almish<b>&</b>Cesàre<b>W</b>eb</a></span></span>
         </footer>
     </div>
 

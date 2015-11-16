@@ -53,10 +53,15 @@ namespace KilometroZero7.Models
     {
         [Key]
         public int ComuneId { get; set; }
+        [Display(Name = "Riferimento")]
         public string NomeRiferimento { get; set; }
+        [Display(Name = "Telefono")]
         public string TelRiferimento { get; set; }
+        [Display(Name = "")]
         public string Comune { get; set; }
+        [Display(Name = "Provincia")]
         public string Provincia { get; set; }
+        [Display(Name = "Regione")]
         public string Regione { get; set; }
 
     }

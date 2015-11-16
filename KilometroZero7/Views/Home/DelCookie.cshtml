@@ -24,7 +24,7 @@ Scrivi la città: <input type="text" id="txtcookie" />
 </button>
 <script>
     $('#LeggiButton').on('click', function () {
-        $('#lblcookie').text($.cookie('comune'));
+        $('#lblcookie').text($.cookie('comune').val);
         $(this).text('letto');
         $('#DelButton').text('cancella');
         $('ScriviButton').text('Scrivi');

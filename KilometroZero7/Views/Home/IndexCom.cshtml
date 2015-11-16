@@ -1,0 +1,103 @@
+﻿@model IEnumerable<KilometroZero7.Models.Prodotti>
+
+@{
+    ViewBag.Title = "KilometroZero";
+}
+@{ var bkg = ViewBag.Title + "_s.jpg";}
+
+@using (Html.BeginForm())
+{
+<div class="jumbotron" style="background-image:url(/Content/Images/@bkg)">
+    <div class="row">
+        <div class="col-md-6 text-center">
+            <h1><span class="red">K</span>ilometro <span class="red">Z</span>ero</h1>
+            <h1 class="red"><span class="red1">@ViewBag.comune</span></h1>
+        </div>
+        <div class="col-md-6 box1">
+            <h3><input id="Text1" type="text" placeholder="Cosa stai cercando?" />
+            </h3>
+            <h3>
+                    <button class="btn btn-primary" value="submit">Trova</button>
+                <button type="button" id="DelButton" class="btn btn-danger" data-toggle="button" aria-pressed="false" autocomplete="off">
+                    Cambia città
+                </button>
+                <script>
+                    $('#DelButton').on('click', function () {
+                        $.cookie('comune', null, { expires: -1, path: '/'});
+                        $('#lblcookie').text($.cookie('comune'));
+                        window.location.href='Index';
+                    })
+                </script>
+           </h3>
+        </div>
+    </div>
+</div>
+
+    if (IsPost)
+    {
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-xs-6 col-sm-3 text-center">
+
+                    <h3 class="text-center">@Html.DisplayFor(modelItem => item.nome_prodotto)</h3>
+                    <a href="@Url.Action("Details", "Home", new { id = item.prodotto_id })">
+                        <img class="img-prodottto" src="@Url.Content("~/Content/Images/prodotti/" + @item.prodotto_id + ".jpg")" />
+                    </a><br />
+                    Prezzo: @Html.DisplayFor(modelItem => item.prezzo_prodotto)<br />
+                    Categoria: @Html.DisplayFor(modelItem => item.nome_categoria.nome_categoria)<br />
+                    <!-- Button trigger modal -->
+                    Commerciante: <a href="#nogo" rel="stylesheet" type="button" data-toggle="modal" data-target="#myModal">@Html.DisplayFor(modelItem => item.utente.RagioneSociale)<span class="glyphicon glyphicon-zoom-in"></span></a>
+                    <!-- Modal -->
+                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title" id="myModalLabel">Dettagli venditore</h4>
+                                </div>
+                                <div class="modal-body">
+                                    @Html.DisplayFor(modelItem => item.utente.RagioneSociale)<br />
+                                    @Html.DisplayFor(modelItem => item.utente.Indirizzo)<br />
+                                    @Html.DisplayFor(modelItem => item.utente.Telefono)<br />
+                                    @Html.DisplayFor(modelItem => item.utente.Email)<br />
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+    <!-- Add the extra clearfix for only the required viewport -->
+                <div class="clearfix visible-xs-block"></div>
+
+            }
+        </div>
+
+    }
+
+}
+
+<div class="row">
+    <div class="col-md-4 text-center">
+        <h1 class="glyphicon glyphicon-euro"></h1>
+        <h2>Sei un commerciante?</h2>
+        @Html.ActionLink("Cogli l'occasione", "Commercianti", "Home", new { @class = "btn btn-primary" })
+    </div>
+    <div class="col-md-4 text-center">
+        <h1 class="glyphicon glyphicon-user"></h1>
+        <h2>Sei un cittadino?</h2>
+        @Html.ActionLink("Vivi la città", "Cittadini", "Home", new { @class = "btn btn-primary" })
+    </div>
+    <div class="col-md-4 text-center">
+        <h1 class="glyphicon glyphicon-tower"></h1>
+        <h2>Comune</h2>
+        @Html.ActionLink("Offri l'opportunità", "Comuni", "Home", new { @class = "btn btn-primary" })
+    </div>
+</div>
+@section scripts
+    {
+    <script type="text/javascript" src="~/Scripts/jquery.cookie.js"></script>
+}

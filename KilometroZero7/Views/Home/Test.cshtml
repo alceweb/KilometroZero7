@@ -1,9 +1,33 @@
-﻿
+﻿@model IEnumerable<KilometroZero7.Models.Comuni>
+
 @{
     ViewBag.Title = "Test";
 }
 
 <h2>Test</h2>
+<div class="dropdown">
+    <h3>In che città ti trovi?</h3>
+    <button class="btn-lg btn-primary dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">
+        Scegli la tua città
+        <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+        @foreach (var item in Model)
+        {
+            <li><a class="dLabel" href="#">@item.Comune</a></li>
+        }
+    </ul>
+</div>
+<script>
+            $(document).ready(function(){
+                $('.dropdown').on('hidden.bs.dropdown', function(){
+                    $.cookie('comune', $('.dLabel').val(), { path: '/' });
+                    $('#lblcookie').text($.cookie('comune'));
+                    window.location.href = 'IndexCom';
+                });
+            });
+</script>
+
 <hr/>
 <p>oggi è l'anno @DateTime.Now.Year mese @DateTime.Now.Month giorno @DateTime.Now.Day ora @DateTime.Now.Hour minuto @DateTime.Now.Minute secondo @DateTime.Now.Second</p>
 @{var tempo = "";
@@ -68,3 +92,7 @@
     @{ var messaggio = "Ciao parola!";}
     @{var città = "Caravaggio";}
     <p>Scrivo: @messaggio la città è @città</p>
+@section scripts
+    {
+    <script type="text/javascript" src="~/Scripts/jquery.cookie.js"></script>
+}
